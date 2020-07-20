@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.live.toofast.mortgage.entity.MortgageApplication;
+import ru.live.toofast.mortgage.model.MortgageList;
 import ru.live.toofast.mortgage.model.MortgageResponse;
 import ru.live.toofast.mortgage.model.MortgageRequest;
 import ru.live.toofast.mortgage.repository.MortgageApplicationRepository;
@@ -23,8 +24,8 @@ public class MortgageController {
 
 
     @GetMapping("/mortgages")
-    public List<MortgageApplication> getAll(){
-        return repository.findAll();
+    public MortgageList getAll(){
+        return new MortgageList(repository.findAll());
     }
 
     @PostMapping("/mortgage")

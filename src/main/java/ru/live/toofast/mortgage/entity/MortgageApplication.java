@@ -1,9 +1,6 @@
 package ru.live.toofast.mortgage.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class MortgageApplication {
@@ -13,6 +10,12 @@ public class MortgageApplication {
     private Long id;
 
     private String name;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Status status;
+
+    @Enumerated(EnumType.ORDINAL)
+    private DeclineReason declineReason;
 
 
     public Long getId() {
@@ -29,5 +32,33 @@ public class MortgageApplication {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public DeclineReason getDeclineReason() {
+        return declineReason;
+    }
+
+    public void setDeclineReason(DeclineReason declineReason) {
+        this.declineReason = declineReason;
+    }
+
+    public enum Status {
+        SUCCESS,
+        DECLINE
+    }
+
+    public enum DeclineReason {
+        NONE,
+        TERRORIST,
+        SCORING_FAILED,
+        LOW_SALARY
     }
 }

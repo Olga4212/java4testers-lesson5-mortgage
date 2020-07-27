@@ -1,12 +1,14 @@
 package ru.live.toofast.mortgage.model;
 
+import ru.live.toofast.mortgage.entity.MortgageApplication;
+
 import java.io.Serializable;
 
 public class MortgageResponse implements Serializable {
 
     private MortgageRequest request;
     private Long id;
-    private String resolution;
+    private MortgageApplication.Status status;
 
 
     public MortgageRequest getRequest() {
@@ -25,12 +27,12 @@ public class MortgageResponse implements Serializable {
         this.id = id;
     }
 
-    public String getResolution() {
-        return resolution;
+    public MortgageApplication.Status getStatus() {
+        return status;
     }
 
-    public void setResolution(String resolution) {
-        this.resolution = resolution;
+    public void setStatus(MortgageApplication.Status status) {
+        this.status = status;
     }
 
     @Override
@@ -38,7 +40,8 @@ public class MortgageResponse implements Serializable {
         return "MortgageApplication{" +
                 "request=" + request +
                 ", id=" + id +
-                ", resolution='" + resolution + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
+
 }
